@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useRef } from "react";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { selectTodos, addTodo, removeToddo } from "./redux/slices/todoSlice";
+import { List } from "./components/List";
+import "./App.scss";
 
 function App() {
+  const todos = useAppSelector(selectTodos);
+  const dispatch = useAppDispatch();
+
+  const newTodoRef = useRef<HTMLInputElement>(null);
+
+  const onAddTodo = useCallback(() => {
+    if (newTodoRef.current) {
+      dispatch(addTodo(newTodoRef.current.value));
+      newTodoRef.current.value = "";
+    }
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input ref={newTodoRef} />
+      <button onClick={onAddTodo}>Add</button>
+      <List
+        items={todos}
+        itemClick={(item) => alert(item.id)}
+        render={(todo) => (
+          <>
+            <span>{todo.text}</span>
+            <button onClick={() => dispatch(removeToddo(todo.id))}>
+              Remove
+            </button>
+          </>
+        )}
+      />
     </div>
   );
 }
