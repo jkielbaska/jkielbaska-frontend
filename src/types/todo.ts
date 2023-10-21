@@ -1,10 +1,10 @@
 export interface Todo {
-  id: number;
+  id: string;
   done: boolean;
   text: string;
 }
 
 export type ActionType =
   | { type: "ADD"; text: string }
-  | { type: "DONE"; id: number }
-  | { type: "REMOVE"; id: number };
+  | { type: "DONE"; id: string }
+  | { type: "REMOVE"; id: string };
