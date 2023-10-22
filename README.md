@@ -5,9 +5,9 @@ Hello :)
 ## How to run the code
 
 ```bash
-git clone https://github.com/jkielbaska/recruitment-frontend.git
+git clone https://github.com/jkielbaska/jkielbaska-frontend.git
 
-cd jkielbaska-avalioio
+cd jkielbaska-frontend
 npm install
 ```
 
@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-localhost:3000 should open auiomatically
+localhost:3000 should open automatically
 
 ### If you want to build app
 
