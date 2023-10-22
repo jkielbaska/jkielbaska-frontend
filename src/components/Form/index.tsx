@@ -42,7 +42,7 @@ export const Form = ({ allDone, onAddTodo }: FormProps<string>) => {
     <form onSubmit={handleSubmit} className="todo-form">
       <ToastContainer />
 
-      <input placeholder="what you have to do?" ref={newTodoRef} className="" />
+      <input placeholder="what you have to do?" ref={newTodoRef} />
       <button type="submit" className={`${allDone ? "done" : "not-done"} `}>
         <img className="icon" src={plusSolid} alt="plus icon" />
       </button>

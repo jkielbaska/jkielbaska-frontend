@@ -63,5 +63,3 @@ function App() {
 }
 
 export default App;
-//Trash Bin icon by Icons8
-//<a target="_blank" href="https://icons8.com/icon/VCUnwdboMYqr/trash-bin">Trash Bin</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

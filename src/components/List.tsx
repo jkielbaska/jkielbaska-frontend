@@ -57,7 +57,7 @@ export const List = ({
               />
               <p> | </p>
               <button
-                className={`icon-button`}
+                className="icon-button"
                 ref={(el) => (buttonRef.current[todo.id] = el)}
                 onClick={() => handleRemoveTodo(todo.id)}
               >
