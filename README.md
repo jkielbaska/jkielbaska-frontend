@@ -34,4 +34,6 @@ Go to [localhost:3000](http://localhost:3000/)
 npm test
 ```
 
+note: There is a bug in @react-three/drei that displays error in terminal. It has no side effects or errors in console. Authors are aware of it and trying to fix it.
+
 #### enjoy :)
