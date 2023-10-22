@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $backgroundColor;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #322;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $primaryColor;
+  }
+}
+
+body {
+  background-color: $backgroundColor;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include sm() {
+    overflow: hidden;
+  }
+}

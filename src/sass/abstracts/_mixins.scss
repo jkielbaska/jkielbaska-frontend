@@ -1,0 +1,21 @@
+@mixin reset-button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: #{$screen-sm}) {
+    @content;
+  }
+}

@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;400;600&display=swap");
+
+p {
+  font-style: normal;
+  font-size: 20px;
+  line-height: 19px;
+}
+input,
+div,
+h1,
+h2,
+h3,
+a,
+p,
+span {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  color: $textColor;
+}
