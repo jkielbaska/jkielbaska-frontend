@@ -1,40 +1,67 @@
-import { useCallback, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { selectTodos, addTodo, removeToddo } from "./redux/slices/todoSlice";
+import {
+  selectTodos,
+  removeTodo,
+  markAsDone,
+  addTodo,
+} from "./redux/slices/todoSlice";
+
 import { List } from "./components/List";
-import "./App.scss";
+import { Form } from "./components/Form";
+import { TitleCard } from "./components/TitleCard";
+
+import ConfettiExplosion from "react-confetti-explosion";
 
 function App() {
   const todos = useAppSelector(selectTodos);
   const dispatch = useAppDispatch();
 
-  const newTodoRef = useRef<HTMLInputElement>(null);
+  const handleRemoveTodo = (id: string) => {
+    dispatch(removeTodo(id));
+  };
 
-  const onAddTodo = useCallback(() => {
-    if (newTodoRef.current) {
-      dispatch(addTodo(newTodoRef.current.value));
-      newTodoRef.current.value = "";
-    }
-  }, [dispatch]);
+  const handleMarkAsDone = (id: string) => {
+    dispatch(markAsDone(id));
+  };
 
+  const handleAddTodo = (value: string) => {
+    dispatch(addTodo(value));
+  };
+
+  const todosDone = todos.filter((todo) => todo.done).length;
+  const allDone = todos.length !== 0 && todosDone === todos.length;
   return (
-    <div className="App">
-      <input ref={newTodoRef} />
-      <button onClick={onAddTodo}>Add</button>
-      <List
-        items={todos}
-        itemClick={(item) => alert(item.id)}
-        render={(todo) => (
-          <>
-            <span>{todo.text}</span>
-            <button onClick={() => dispatch(removeToddo(todo.id))}>
-              Remove
-            </button>
-          </>
-        )}
-      />
+    <div>
+      <p className="link">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://icons8.com/icon/VCUnwdboMYqr/trash-bin"
+        >
+          trash bin
+        </a>{" "}
+        icon by{" "}
+        <a target="_blank" rel="noreferrer" href="https://icons8.com">
+          icons8
+        </a>
+      </p>
+
+      {allDone && <ConfettiExplosion force={0.7} />}
+      <main className="todo-main">
+        <TitleCard allDone={allDone} todosDone={todosDone} todos={todos} />
+
+        <Form allDone={allDone} onAddTodo={handleAddTodo} />
+
+        <List
+          todos={todos}
+          onRemoveTodo={handleRemoveTodo}
+          onMarkAsDone={handleMarkAsDone}
+        />
+      </main>
     </div>
   );
 }
 
 export default App;
+//Trash Bin icon by Icons8
+//<a target="_blank" href="https://icons8.com/icon/VCUnwdboMYqr/trash-bin">Trash Bin</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
