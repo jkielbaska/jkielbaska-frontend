@@ -28,8 +28,9 @@ function App() {
     dispatch(addTodo(value));
   };
 
-  const todosDone = todos.filter((todo) => todo.done).length;
-  const allDone = todos.length !== 0 && todosDone === todos.length;
+  const todosDone = todos?.filter((todo) => todo.done).length;
+  const allDone = todos?.length !== 0 && todosDone === todos?.length;
+
   return (
     <div>
       <p className="link">

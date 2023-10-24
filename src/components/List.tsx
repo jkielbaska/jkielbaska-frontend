@@ -29,7 +29,7 @@ export const List = ({
 
   return (
     <div className="todo-list">
-      {todos.map((todo: Todo) => (
+      {todos?.map((todo: Todo) => (
         <div
           className="list-element"
           ref={(el) => (elementRef.current[todo.id] = el)}
